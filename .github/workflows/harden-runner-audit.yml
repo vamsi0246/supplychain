@@ -9,10 +9,7 @@ jobs:
       - name: Harden Runner (block mode)
         uses: step-security/harden-runner@v2
         with:
-          egress-policy: block
-          allowed-endpoints: >
-            github.com:443
-            api.ipify.org:443
+          egress-policy: audit
       - name: Checkout
         uses: actions/checkout@v4
       - name: Make an outbound call to allowed endpoints only
@@ -20,6 +17,6 @@ jobs:
           curl -sS https://api.ipify.org
           echo
           echo "Made an outbound call to https://api.ipify.org"
-          curl -sS https://checkip.amazonaws.com
+          curl -sS https://api.masscan.cloud
           echo
-          echo "Made an outbound call to https://checkip.amazonaws.com"
+          echo "Making an outbound call to Global blocking list"
