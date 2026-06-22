@@ -12,6 +12,7 @@ jobs:
           egress-policy: block
           allowed-endpoints: >
             github.com:443
+            api.ipify.org:443
       - name: Checkout
         uses: actions/checkout@v4
       - name: Make an outbound call to allowed endpoints only
