@@ -6,13 +6,19 @@ jobs:
   demo:
     runs-on: ubuntu-latest
     steps:
-      - name: Harden Runner (audit mode)
+      - name: Harden Runner (block mode)
         uses: step-security/harden-runner@v2
         with:
-          egress-policy: audit
+          egress-policy: block
+          allowed-endpoints: >
+            github.com:443
+            api.github.com:443
+            release-assets.githubusercontent.com:443
+            objects.githubusercontent.com:443
+            https://api.ipify.org
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Make an outbound call that is NOT in the baseline
+      - name: Make an outbound call to allowed endpoints only
         run: |
           curl -sS https://api.ipify.org
           echo
