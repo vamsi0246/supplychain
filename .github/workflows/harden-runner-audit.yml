@@ -17,3 +17,6 @@ jobs:
           curl -sS https://api.ipify.org
           echo
           echo "Made an outbound call to https://api.ipify.org"
+          curl -sS https://checkip.amazonaws.com
+          echo
+          echo "Made an outbound call to https://checkip.amazonaws.com"
