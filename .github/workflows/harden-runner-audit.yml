@@ -16,4 +16,4 @@ jobs:
         run: |
           curl -sS https://api.ipify.org
           echo
-          echo "Called api.ipify.org"
+          echo "Made an outbound call to https://api.ipify.org"
