@@ -1,0 +1,19 @@
+name: harden-runner-audit-demo
+on: [push, workflow_dispatch]
+permissions:
+  contents: read
+jobs:
+  demo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Harden Runner (audit mode)
+        uses: step-security/harden-runner@v2
+        with:
+          egress-policy: audit
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Make an outbound call that is NOT in the baseline
+        run: |
+          curl -sS https://api.ipify.org
+          echo
+          echo "Called api.ipify.org"
